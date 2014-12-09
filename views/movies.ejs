@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css">
+
+	<title>Selected Title</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+  		<div class="container-fluid">
+   			 	<ul>
+   			 		<h4 class="navbar-left">Media For Reel</h4>
+   			 		<button type="button" class="navbtn btn btn-default navbar-right"><a href="/">New Search</a></button>
+   			 		<button type="button" class="navbtn btn btn-default navbar-right"><a href="/added">Watch List</a></button>
+      			</ul>
+  		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-6 col-sm-6 text-left">
+				<form action="/added" method="post">	
+					<input type="hidden" name="title_name" value="<%=title%>">
+					<input type="hidden" name="year" value="<%=year%>">
+					<input type="hidden" name="imdb_code" value="<%=imdb%>">
+					<button type="submit" class="btn btn-primary btn-sm">+</button>
+				</form>
+				<hr>
+				<br>
+				<p>Title: <%=title%></p>
+				<hr>
+				<br>
+				<p>Year: <%=year%></p>
+				<hr>
+				<br>
+				<p>Genre: <%=genre%></p>
+				<hr>
+				<br>
+				<p>Actors: <%=actors%></p>
+				<hr>
+				<br>
+				<p>Tomato Rating: <%=tomatoPts%></p>
+			</div>
+
+			<div class="col-md-6 col-sm-6 text-right">
+				<img src=<%=poster%>>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
