@@ -56,13 +56,12 @@ app.post("/added", function(req, res) {
 
 	// db.watch_list.create(req.body).done(function(err, data) {
 	// 		if(err) throw err;
-	// 	// console.log(data);
 	// 	res.render("added");
 
 	db.watch_list.findOrCreate({where: req.body}).spread(function(data, wasMade) {
-		// res.send(data);
+		res.send({"data": data,"created": wasMade});
 
-		res.redirect("/added?=added=" +wasMade);
+		// res.redirect("/added?=added=" +wasMade);
 	// .catch grabs the error	
 	}).catch(function(err) {
 		if(err) {throw err};
@@ -81,6 +80,7 @@ app.get("/added", function(req, res) {
 		if(err) {throw err}
 	})
 })
+
 
 app.delete("/added/:id", function(req, res) {
 	// console.log(req.params.id)

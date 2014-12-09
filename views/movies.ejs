@@ -4,7 +4,10 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="/style.css" rel="stylesheet" type="text/css">
+	<script src="/script.js" type="text/javascript"></script>
+
+
 
 	<title>Selected Title</title>
 </head>
@@ -25,12 +28,11 @@
 		<div class="row">
 
 			<div class="col-md-6 col-sm-6 text-left">
-				<form action="/added" method="post">	
-					<input type="hidden" name="title_name" value="<%=title%>">
-					<input type="hidden" name="year" value="<%=year%>">
-					<input type="hidden" name="imdb_code" value="<%=imdb%>">
-					<button type="submit" class="btn btn-primary btn-sm">+</button>
-				</form>
+
+				
+				<!-- passing through to AJAX add button -->
+				<a href="#" data-title="<%=title%>" data-year="<%=year%>" data-imdb="<%=imdb%>" class="btn btn-primary btn-sm addButton">+</a>
+		
 				<hr>
 				<br>
 				<p>Title: <%=title%></p>
@@ -58,3 +60,10 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
