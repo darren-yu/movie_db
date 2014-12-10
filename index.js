@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname + "/public"));
 
+var lastSearch;
 
 app.get("/", function(req, res) {
 	res.render("index");
@@ -21,6 +22,7 @@ app.get("/results", function(req, res) {
 		if(error) {throw error};
 		if(!error && response.statusCode == 200) {
 			var content = JSON.parse(body);
+			lastSearch = searchTerm;
 			res.render("results", {"search":content.Search || []});
 		}
 	})	
@@ -43,10 +45,16 @@ app.get("/movies/:imdb", function(req, res) {
 				"actors": objData.Actors,
 				"tomatoPts": objData.tomatoRating,
 				"poster": objData.Poster,
-				"imdb": imdbNum
+				"imdb": imdbNum,
+				"previousSearch":lastSearch
 			})
 		}
 	})
+})
+
+
+app.get("/results?title=" + lastSearch, function(req, res) {
+	res.render("results");
 })
 
 
