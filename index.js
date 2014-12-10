@@ -59,16 +59,9 @@ app.get("/results?title=" + lastSearch, function(req, res) {
 
 
 app.post("/added", function(req, res) {
-	// res.send(req.body);
-	// console.log(req.body);
 
-	// db.watch_list.create(req.body).done(function(err, data) {
-	// 		if(err) throw err;
-	// 	res.render("added");
-
-	db.watch_list.findOrCreate({where: req.body}).spread(function(data, wasMade) {
+	db.watch_list.findOrCreate({where: req.body}).spread(function(watch_list, wasMade) {
 		res.send({"data": data,"created": wasMade});
-
 		// res.redirect("/added?=added=" +wasMade);
 	// .catch grabs the error	
 	}).catch(function(err) {
@@ -98,4 +91,40 @@ app.delete("/added/:id", function(req, res) {
 })
 
 
+app.post("/added/:id/comments", function(req, res) {
+	// console.log(req.params.id);
+	// console.log(req.body);
+
+	db.comment.findOrCreate({where: req.body}).spread(function(data, wasMade) {
+		res.redirect("comments");
+		// .catch grabs the error
+	}).catch(function(err) {
+	if(err) {throw err};
+	})
+})
+
+
+app.get("/added/:id/comments", function(req, res) {
+
+	db.comment.findAll({order: "id ASC"}).then(function(data) {
+		// console.log(data);
+		res.render("comments", {"watchlistNum":req.params.id,"commentData":data});
+		
+	})
+})
+
+
+
+
+
+
+
+
 app.listen(3000);
+
+
+
+
+
+
+

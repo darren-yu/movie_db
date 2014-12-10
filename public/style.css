@@ -2,7 +2,7 @@
 	margin-bottom: 5px;
 }
 
-.home, .results, .added {
+.home, .results, .added, .comments {
 	border: 5px solid rgb(0,0,0);
 	background-color: rgb(184,184,184);
 }
