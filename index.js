@@ -60,7 +60,7 @@ app.get("/results?title=" + lastSearch, function(req, res) {
 
 app.post("/added", function(req, res) {
 
-	db.watch_list.findOrCreate({where: req.body}).spread(function(watch_list, wasMade) {
+	db.watch_list.findOrCreate({where: req.body}).spread(function(data, wasMade) {
 		res.send({"data": data,"created": wasMade});
 		// res.redirect("/added?=added=" +wasMade);
 	// .catch grabs the error	
